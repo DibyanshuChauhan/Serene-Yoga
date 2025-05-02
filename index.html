@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serene Yoga Studio</title>
+    <link rel="shortcut icon" href="./favicon_io/android-chrome-192x192.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon_io/android-chrome-512x512.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon_io/apple-touch-icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon_io/favicon-16x16.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon_io/favicon-32x32.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon_io/favicon.ico" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Locomotive Scroll CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <!-- Minimal CSS for Locomotive Scroll -->
+    <style>
+      html.has-scroll-smooth {
+        overflow: hidden;
+      }
+      html.has-scroll-dragging {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      [data-scroll-container] {
+        min-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar Toggle Switch -->
+    <div class="navbar-toggle">
+      <label class="navbar-toggle-label">Hide Navbar</label>
+      <label class="navbar-toggle-switch">
+        <input type="checkbox" id="navbar-toggle" />
+        <span class="navbar-toggle-slider"></span>
+      </label>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container nav-menu">
+        <div class="nav-links">
+          <div class="logo">
+            <a href="#home">Serene Yoga</a>
+          </div>
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#classes">Classes</a>
+          <a href="#blog">Blog</a>
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-sun"></i>
+          </button>
+          <!-- Welcome Message and Dashboard Dropdown -->
+          <div class="dashboard-dropdown">
+            <div class="welcome-message"></div>
+            <div class="dashboard-content" style="display: none"></div>
+          </div>
+          <!-- Logout Button -->
+          <button class="logout-btn" style="display: none">Logout</button>
+        </div>
+        <div class="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+      <div class="modal-content">
+        <span class="close-modal" id="close-login-modal">×</span>
+        <h3>Login</h3>
+        <form id="login-form">
+          <div>
+            <label for="login-username">Username:</label>
+            <input
+              type="text"
+              id="login-username"
+              name="login-username"
+              required
+            />
+          </div>
+          <div>
+            <label for="login-password">Password:</label>
+            <input
+              type="password"
+              id="login-password"
+              name="login-password"
+              required
+            />
+          </div>
+          <button type="submit">Login</button>
+          <p>
+            Don't have an account?
+            <a href="#" id="signup-link">Sign Up</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signup-modal">
+      <div class="modal-content">
+        <span class="close-modal" id="close-signup-modal">×</span>
+        <h3>Sign Up</h3>
+        <form id="signup-form">
+          <div>
+            <label for="signup-username">Username:</label>
+            <input
+              type="text"
+              id="signup-username"
+              name="signup-username"
+              required
+            />
+          </div>
+          <div>
+            <label for="signup-password">Password:</label>
+            <input
+              type="password"
+              id="signup-password"
+              name="signup-password"
+              required
+            />
+          </div>
+          <button type="submit">Sign Up</button>
+          <p>
+            Already have an account?
+            <a href="#" id="login-link">Login</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div class="modal" id="registration-modal">
+      <div class="modal-content">
+        <span class="close-modal" id="close-registration-modal">×</span>
+        <h3>Register for Classes</h3>
+        <form id="registration-form">
+          <div>
+            <label for="reg-fullname">Full Name:</label>
+            <input
+              type="text"
+              id="reg-fullname"
+              name="fullname"
+              required
+            />
+          </div>
+          <div>
+            <label for="reg-email">Email:</label>
+            <input
+              type="email"
+              id="reg-email"
+              name="email"
+              required
+            />
+          </div>
+          <div>
+            <label for="reg-phone">Phone Number:</label>
+            <input
+              type="tel"
+              id="reg-phone"
+              name="phone"
+              required
+            />
+          </div>
+          <div>
+            <label for="reg-class">Select Class:</label>
+            <select id="reg-class" name="class" required>
+              <option value="" disabled selected>Select a class</option>
+              <option value="Hatha Yoga">Hatha Yoga</option>
+              <option value="Vinyasa Flow">Vinyasa Flow</option>
+              <option value="Yin Yoga">Yin Yoga</option>
+              <option value="Power Yoga">Power Yoga</option>
+              <option value="Restorative Yoga">Restorative Yoga</option>
+              <option value="Ashtanga Yoga">Ashtanga Yoga</option>
+            </select>
+          </div>
+          <div>
+            <label for="reg-date">Preferred Date:</label>
+            <input
+              type="date"
+              id="reg-date"
+              name="date"
+              required
+            />
+          </div>
+          <div>
+            <label for="reg-time">Preferred Time:</label>
+            <input
+              type="time"
+              id="reg-time"
+              name="time"
+              required
+            />
+          </div>
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" data-scroll-container>
+      <!-- Hero Section -->
+      <section id="home" class="hero">
+        <div class="hero-content container"></div>
+      </section>
+
+      <div class="wave-divider"></div>
+
+      <!-- About Section -->
+      <section id="about" class="about">
+        <div class="container">
+          <h2>About Us</h2>
+          <div class="about-content">
+            <div class="about-text">
+              <p>
+                At Serene Yoga Studio, we are dedicated to fostering a holistic
+                approach to wellness through the transformative power of yoga.
+                Established in 2015, our studio has been a sanctuary for
+                individuals seeking balance, mindfulness, and physical strength.
+                Our mission is to create an inclusive community where everyone,
+                from beginners to advanced practitioners, can explore yoga in a
+                supportive environment.
+              </p>
+              <p>
+                Our philosophy is rooted in the belief that yoga is more than
+                just physical exercise—it’s a journey toward inner peace and
+                self-discovery. We offer a variety of classes tailored to
+                different skill levels, led by certified instructors who are
+                passionate about sharing their knowledge and guiding you on your
+                wellness journey.
+              </p>
+              <p>
+                Located in the heart of the city, our studio features
+                state-of-the-art facilities, calming interiors, and a serene
+                ambiance designed to enhance your practice. Whether you’re
+                looking to relieve stress, improve flexibility, or connect with
+                like-minded individuals, Serene Yoga Studio is your home for
+                wellness.
+              </p>
+            </div>
+            <div class="about-image">
+              <img
+                src="./assets/Yoga class.jpg"
+                alt="Yoga instructor teaching a class"
+              />
+            </div>
+          </div>
+          <div class="about-team">
+            <h3>Meet Our Team</h3>
+            <div class="team-grid">
+              <div class="team-member">
+                <img src="./assets/Anjali Sharma.jpg" alt="Instructor Anjali" />
+                <h4>Anjali Sharma</h4>
+                <p>Lead Instructor, 10+ years of experience</p>
+              </div>
+              <div class="team-member">
+                <img src="./assets/Priya Patel.jpg" alt="Instructor Priya" />
+                <h4>Priya Patel</h4>
+                <p>Yin Yoga Specialist</p>
+              </div>
+              <div class="team-member">
+                <img src="./assets/Julie Smith.jpg" alt="Instructor Julie" />
+                <h4>Julie Smith</h4>
+                <p>Vinyasa Flow Expert</p>
+              </div>
+              <div class="team-member">
+                <img src="./assets/Neha Gupta.jpg" alt="Instructor Neha" />
+                <h4>Neha Gupta</h4>
+                <p>Restorative Yoga Specialist</p>
+              </div>
+              <div class="team-member">
+                <img src="./assets/Sakshi Patwal.jpg" alt="Instructor Sakshi" />
+                <h4>Sakshi Patwal</h4>
+                <p>Ashtanga Yoga Expert</p>
+              </div>
+              <div class="team-member">
+                <img
+                  src="./assets/Bhumika Patel.jpg"
+                  alt="Instructor Bhumika"
+                />
+                <h4>Bhumika Patil</h4>
+                <p>Meditation & Mindfulness Coach</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="wave-divider"></div>
+
+      <!-- Classes Section -->
+      <section id="classes" class="classes">
+        <div class="container">
+          <h2>Our Classes</h2>
+          <div class="calendar-container">
+            <div class="calendar-filters">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="Hatha Yoga">Hatha</button>
+              <button class="filter-btn" data-filter="Vinyasa Flow">
+                Vinyasa
+              </button>
+              <button class="filter-btn" data-filter="Yin Yoga">Yin</button>
+              <button class="filter-btn" data-filter="Power Yoga">Power</button>
+              <button class="filter-btn" data-filter="Restorative Yoga">
+                Restorative
+              </button>
+              <button class="filter-btn" data-filter="Ashtanga Yoga">
+                Ashtanga
+              </button>
+            </div>
+            <div id="calendar"></div>
+          </div>
+          <div class="class-grid">
+            <div class="class-card">
+              <img src="./assets/Hatha Yoga.jpg" alt="Hatha Yoga" />
+              <h3>Hatha Yoga</h3>
+              <p>
+                Focus on breath and alignment in this foundational practice,
+                perfect for building strength and flexibility.
+              </p>
+              <div class="class-details">
+                <ul>
+                  <li>
+                    <i class="fas fa-clock"></i><strong>Timings:</strong> Mon -
+                    7:00 AM
+                  </li>
+                  <li>
+                    <i class="fas fa-level-up-alt"></i
+                    ><strong>Levels:</strong> Beginner, Intermediate
+                  </li>
+                  <li>
+                    <i class="fas fa-user"></i
+                    ><strong>Instructor:</strong> Anjali Sharma
+                  </li>
+                  <li>
+                    <i class="fas fa-info-circle"></i
+                    ><strong>Duration:</strong> 60 minutes
+                  </li>
+                </ul>
+              </div>
+              <div class="share-options">
+                <button class="share-link-btn" data-title="Hatha Yoga" data-type="class">Copy Link</button>
+                <div class="social-share">
+                  <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="class-card">
+              <img src="./assets/Vinyasa Flow.webp" alt="Vinyasa Flow" />
+              <h3>Vinyasa Flow</h3>
+              <p>
+                Dynamic sequences that sync movement with breath, ideal for
+                those seeking a challenging and fluid practice.
+              </p>
+              <div class="class-details">
+                <ul>
+                  <li>
+                    <i class="fas fa-clock"></i><strong>Timings:</strong> Tue -
+                    8:00 AM
+                  </li>
+                  <li>
+                    <i class="fas fa-level-up-alt"></i
+                    ><strong>Levels:</strong> Intermediate, Advanced
+                  </li>
+                  <li>
+                    <i class="fas fa-user"></i
+                    ><strong>Instructor:</strong> Julie Smith
+                  </li>
+                  <li>
+                    <i class="fas fa-info-circle"></i
+                    ><strong>Duration:</strong> 75 minutes
+                  </li>
+                </ul>
+              </div>
+              <div class="share-options">
+                <button class="share-link-btn" data-title="Vinyasa Flow" data-type="class">Copy Link</button>
+                <div class="social-share">
+                  <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="class-card">
+              <img src="./assets/Yin Yoga.jpg" alt="Yin Yoga" />
+              <h3>Yin Yoga</h3>
+              <p>
+                Deep, restorative poses held for relaxation, perfect for stress
+                relief and flexibility.
+              </p>
+              <div class="class-details">
+                <ul>
+                  <li>
+                    <i class="fas fa-clock"></i><strong>Timings:</strong> Wed -
+                    8:00 PM
+                  </li>
+                  <li>
+                    <i class="fas fa-level-up-alt"></i
+                    ><strong>Levels:</strong> All Levels
+                  </li>
+                  <li>
+                    <i class="fas fa-user"></i
+                    ><strong>Instructor:</strong> Priya Patel
+                  </li>
+                  <li>
+                    <i class="fas fa-info-circle"></i
+                    ><strong>Duration:</strong> 90 minutes
+                  </li>
+                </ul>
+              </div>
+              <div class="share-options">
+                <button class="share-link-btn" data-title="Yin Yoga" data-type="class">Copy Link</button>
+                <div class="social-share">
+                  <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="class-card">
+              <img src="./assets/Power Yoga.webp" alt="Power Yoga" />
+              <h3>Power Yoga</h3>
+              <p>
+                A vigorous practice to build strength, stamina, and focus,
+                blending dynamic movements.
+              </p>
+              <div class="class-details">
+                <ul>
+                  <li>
+                    <i class="fas fa-clock"></i><strong>Timings:</strong> Thu -
+                    6:00 PM
+                  </li>
+                  <li>
+                    <i class="fas fa-level-up-alt"></i
+                    ><strong>Levels:</strong> Intermediate, Advanced
+                  </li>
+                  <li>
+                    <i class="fas fa-user"></i
+                    ><strong>Instructor:</strong> Anjali Sharma
+                  </li>
+                  <li>
+                    <i class="fas fa-info-circle"></i
+                    ><strong>Duration:</strong> 60 minutes
+                  </li>
+                </ul>
+              </div>
+              <div class="share-options">
+                <button class="share-link-btn" data-title="Power Yoga" data-type="class">Copy Link</button>
+                <div class="social-share">
+                  <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="class-card">
+              <img src="./assets/Restorative Yoga.jpg" alt="Restorative Yoga" />
+              <h3>Restorative Yoga</h3>
+              <p>
+                Gentle poses with props to promote deep relaxation and healing,
+                ideal for all levels.
+              </p>
+              <div class="class-details">
+                <ul>
+                  <li>
+                    <i class="fas fa-clock"></i><strong>Timings:</strong> Fri -
+                    7:00 PM
+                  </li>
+                  <li>
+                    <i class="fas fa-level-up-alt"></i
+                    ><strong>Levels:</strong> All Levels
+                  </li>
+                  <li>
+                    <i class="fas fa-user"></i
+                    ><strong>Instructor:</strong> Neha
+                    Gupta
+                  </li>
+                  <li>
+                    <i class="fas fa-info-circle"></i
+                    ><strong>Duration:</strong> 75 minutes
+                  </li>
+                </ul>
+              </div>
+              <div class="share-options">
+                <button class="share-link-btn" data-title="Restorative Yoga" data-type="class">Copy Link</button>
+                <div class="social-share">
+                  <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="class-card">
+              <img src="./assets/Ashtanga Yoga.webp" alt="Ashtanga Yoga" />
+              <h3>Ashtanga Yoga</h3>
+              <p>
+                A structured, vigorous practice with a set sequence to build
+                strength and discipline.
+              </p>
+              <div class="class-details">
+                <ul>
+                  <li>
+                    <i class="fas fa-clock"></i><strong>Timings:</strong> Sat -
+                    8:00 AM
+                  </li>
+                  <li>
+                    <i class="fas fa-level-up-alt"></i
+                    ><strong>Levels:</strong> Intermediate, Advanced
+                  </li>
+                  <li>
+                    <i class="fas fa-user"></i
+                    ><strong>Instructor:</strong> Sakshi Patwal
+                  </li>
+                  <li>
+                    <i class="fas fa-info-circle"></i
+                    ><strong>Duration:</strong> 90 minutes
+                  </li>
+                </ul>
+              </div>
+              <div class="share-options">
+                <button class="share-link-btn" data-title="Ashtanga Yoga" data-type="class">Copy Link</button>
+                <div class="social-share">
+                  <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="wave-divider"></div>
+
+        <!-- Blog Section -->
+        <section id="blog" class="blog">
+          <div class="container">
+            <h2>Our Blog</h2>
+            <div class="blog-grid">
+              <div class="blog-card">
+                <img
+                  src="./assets/Benefits_Yin_Yoga.jpg"
+                  alt="Benefits of Yin Yoga"
+                />
+                <h3>Benefits of Yin Yoga</h3>
+                <p class="blog-content">
+                  Discover how Yin Yoga’s deep, restorative poses can reduce
+                  stress and improve flexibility for all levels.
+                </p>
+                <div class="full-content">
+                  <p>
+                    Yin Yoga is a slow-paced style of yoga with poses that are
+                    held for longer periods, typically 3 to 5 minutes. This
+                    practice targets the deep connective tissues, such as
+                    ligaments and fascia, promoting flexibility and circulation.
+                    It’s particularly beneficial for stress relief, as it
+                    encourages mindfulness and deep breathing, helping to calm the
+                    nervous system. Whether you're a beginner or an advanced
+                    practitioner, Yin Yoga offers a nurturing way to release
+                    tension, improve joint mobility, and enhance overall
+                    well-being.
+                  </p>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+                <a href="#" class="show-less">Show Less</a>
+                <div class="share-options">
+                  <button class="share-link-btn" data-title="Benefits of Yin Yoga" data-type="blog">Copy Link</button>
+                  <div class="social-share">
+                    <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="blog-card">
+                <img
+                  src="./assets/Yoga_Journey.jpg"
+                  alt="Starting Your Yoga Journey"
+                />
+                <h3>Starting Your Yoga Journey</h3>
+                <p class="blog-content">
+                  Tips for beginners to ease into yoga, choose the right class,
+                  and build a sustainable practice.
+                </p>
+                <div class="full-content">
+                  <p>
+                    Starting yoga can be both exciting and intimidating,
+                    especially if you're new to the practice. Begin by setting
+                    realistic goals and choosing a class that matches your skill
+                    level—Hatha or Restorative Yoga are great for beginners.
+                    Invest in a good yoga mat and wear comfortable clothing.
+                    Consistency is key, so aim for a regular practice, even if
+                    it’s just 15 minutes a day. Listen to your body, stay patient,
+                    and enjoy the journey of self-discovery and wellness that yoga
+                    offers.
+                  </p>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+                <a href="#" class="show-less">Show Less</a>
+                <div class="share-options">
+                  <button class="share-link-btn" data-title="Starting Your Yoga Journey" data-type="blog">Copy Link</button>
+                  <div class="social-share">
+                    <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="blog-card">
+                <img
+                  src="./assets/Mindfullness.jpg"
+                  alt="Mindfulness Through Ashtanga"
+                />
+                <h3>Mindfulness Through Ashtanga</h3>
+                <p class="blog-content">
+                  Explore how Ashtanga Yoga’s structured sequences foster
+                  discipline and mental clarity.
+                </p>
+                <div class="full-content">
+                  <p>
+                    Ashtanga Yoga is a dynamic, physically demanding practice that
+                    follows a specific sequence of poses, synchronizing breath
+                    with movement. This structured approach not only builds
+                    strength and flexibility but also cultivates mindfulness by
+                    requiring focused attention on each breath and posture. The
+                    repetitive nature of the sequence helps practitioners develop
+                    discipline, while the meditative flow enhances mental clarity
+                    and emotional balance. Ashtanga is ideal for those looking to
+                    deepen their practice and connect with their inner self.
+                  </p>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+                <a href="#" class="show-less">Show Less</a>
+                <div class="share-options">
+                  <button class="share-link-btn" data-title="Mindfulness Through Ashtanga" data-type="blog">Copy Link</button>
+                  <div class="social-share">
+                    <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="blog-card">
+                <img
+                  src="./assets/Stress_Relief.jpg"
+                  alt="Yoga for Stress Relief"
+                />
+                <h3>Yoga for Stress Relief</h3>
+                <p class="blog-content">
+                  Learn how yoga practices like Hatha and Restorative can help you
+                  manage stress effectively.
+                </p>
+                <div class="full-content">
+                  <p>
+                    Stress is a common issue in today’s fast-paced world, but yoga
+                    offers a natural way to manage it. Practices like Hatha Yoga,
+                    which focuses on slow, deliberate movements and breath
+                    control, help activate the parasympathetic nervous system,
+                    promoting relaxation. Restorative Yoga, with its gentle poses
+                    and use of props, allows the body to fully relax, reducing
+                    cortisol levels. Incorporating these practices into your
+                    routine can improve your mood, enhance sleep quality, and
+                    provide a sense of calm amidst life’s chaos.
+                  </p>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+                <a href="#" class="show-less">Show Less</a>
+                <div class="share-options">
+                  <button class="share-link-btn" data-title="Yoga for Stress Relief" data-type="blog">Copy Link</button>
+                  <div class="social-share">
+                    <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="blog-card">
+                <img
+                  src="./assets/Power_strength.jpg"
+                  alt="Power Yoga for Strength"
+                />
+                <h3>Power Yoga for Strength</h3>
+                <p class="blog-content">
+                  Discover how Power Yoga can build physical strength and mental
+                  resilience through dynamic movements.
+                </p>
+                <div class="full-content">
+                  <p>
+                    Power Yoga is a fast-paced, fitness-based style of yoga that
+                    emphasizes strength, endurance, and flexibility. Derived from
+                    Ashtanga Yoga, it incorporates dynamic movements and flows
+                    that challenge the body and mind. Regular practice can improve
+                    muscle tone, boost cardiovascular health, and enhance mental
+                    focus. Power Yoga is perfect for those who enjoy a more
+                    vigorous workout while still reaping the meditative benefits
+                    of yoga. Join our classes to experience a full-body
+                    transformation!
+                  </p>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+                <a href="#" class="show-less">Show Less</a>
+                <div class="share-options">
+                  <button class="share-link-btn" data-title="Power Yoga for Strength" data-type="blog">Copy Link</button>
+                  <div class="social-share">
+                    <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="blog-card">
+                <img
+                  src="./assets/Meditation_Yoga.jpg"
+                  alt="Meditation and Yoga"
+                />
+                <h3>Meditation and Yoga</h3>
+                <p class="blog-content">
+                  Learn how combining meditation with yoga can deepen your
+                  practice and enhance mindfulness.
+                </p>
+                <div class="full-content">
+                  <p>
+                    Meditation and yoga go hand in hand, creating a powerful
+                    synergy for mental and physical well-being. While yoga
+                    prepares the body by releasing tension and improving
+                    flexibility, meditation calms the mind, enhancing focus and
+                    mindfulness. Together, they help you achieve a deeper state of
+                    awareness and inner peace. At Serene Yoga Studio, our
+                    Meditation & Mindfulness classes guide you through techniques
+                    to integrate these practices, helping you find balance and
+                    tranquility in your daily life.
+                  </p>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+                <a href="#" class="show-less">Show Less</a>
+                <div class="share-options">
+                  <button class="share-link-btn" data-title="Meditation and Yoga" data-type="blog">Copy Link</button>
+                  <div class="social-share">
+                    <a href="#" class="social-share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-share-btn" data-platform="instagram"><i class="fab fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="wave-divider"></div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="container">
+            <div class="footer-content">
+              <div class="footer-section">
+                <h4>About Serene Yoga</h4>
+                <p>
+                  Serene Yoga Studio is your sanctuary for wellness, offering a
+                  range of classes to promote balance and mindfulness since 2015.
+                </p>
+              </div>
+              <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><a href="#home">Home</a></li>
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#classes">Classes</a></li>
+                  <li><a href="#blog">Blog</a></li>
+                </ul>
+              </div>
+              <div class="footer-section">
+                <h4>Stay Connected</h4>
+                <p>Subscribe to our newsletter for updates and wellness tips.</p>
+                <form id="newsletter-form" class="newsletter-form">
+                  <input
+                    type="email"
+                    id="newsletter-email"
+                    placeholder="Enter your email"
+                    required
+                  />
+                  <button type="submit">Subscribe</button>
+                </form>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="https://facebook.com/sereneyoga" target="_blank"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://instagram.com/sereneyoga" target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://twitter.com/sereneyoga" target="_blank"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </div>
+            <div class="footer-divider"></div>
+            <p>© 2025 Serene Yoga Studio. All rights reserved.</p>
+          </div>
+        </footer>
+
+        <!-- Back to Top Button -->
+        <button class="back-to-top" aria-label="Back to top">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+
+        <!-- Modal for Calendar Events -->
+        <div class="modal" id="class-modal">
+          <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h3 id="modal-title"></h3>
+            <p id="modal-time"></p>
+            <p id="modal-instructor"></p>
+            <p id="modal-level"></p>
+            <p id="modal-duration"></p>
+            <a href="#" class="cta-btn" id="enquiry-now-btn">Enquiry Now</a>
+          </div>
+        </div>
+
+        <!-- Modal for Enquiry Form -->
+        <div class="modal" id="enquiry-modal">
+          <div class="enquiry-modal-content">
+            <span class="close-modal">×</span>
+            <h3>Send Your Enquiry</h3>
+            <form id="enquiry-form">
+              <div class="grid grid-cols-1 gap-3">
+                <div>
+                  <label for="name" class="block">Full Name:</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="border-2 border-accent rounded-lg p-2 bg-card-bg text-text focus:outline-none focus:border-primary focus:shadow-md w-full"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block">Email:</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="border-2 border-accent rounded-lg p-2 bg-card-bg text-text focus:outline-none focus:border-primary focus:shadow-md w-full"
+                  />
+                </div>
+                <div>
+                  <label for="phone" class="block">Phone Number:</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    class="border-2 border-accent rounded-lg p-2 bg-card-bg text-text focus:outline-none focus:border-primary focus:shadow-md w-full"
+                  />
+                </div>
+                <div>
+                  <label for="enquiry-class" class="block">Class:</label>
+                  <input
+                    type="text"
+                    id="enquiry-class"
+                    name="class"
+                    readonly
+                    class="border-2 border-accent rounded-lg p-2 bg-gray-100 text-text opacity-90 w-full"
+                  />
+                </div>
+                <div>
+                  <label for="enquiry-date" class="block">Date:</label>
+                  <input
+                    type="text"
+                    id="enquiry-date"
+                    name="date"
+                    readonly
+                    class="border-2 border-accent rounded-lg p-2 bg-gray-100 text-text opacity-90 w-full"
+                  />
+                </div>
+                <div>
+                  <label for="enquiry-time" class="block">Time:</label>
+                  <input
+                    type="text"
+                    id="enquiry-time"
+                    name="time"
+                    readonly
+                    class="border-2 border-accent rounded-lg p-2 bg-gray-100 text-text opacity-90 w-full"
+                  />
+                </div>
+                <div>
+                  <label for="enquiry-message" class="block">Your Enquiry:</label>
+                  <textarea
+                    id="enquiry-message"
+                    name="message"
+                    rows="3"
+                    placeholder="Enter your enquiry or questions here..."
+                    required
+                    class="border-2 border-accent rounded-lg p-2 bg-card-bg text-text focus:outline-none focus:border-primary focus:shadow-md w-full"
+                  ></textarea>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    class="bg-gradient-to-r from-primary to-yellow-400 text-white rounded-lg p-2 font-semibold hover:scale-105 hover:shadow-lg transition-transform duration-300 w-full"
+                  >
+                    Submit Enquiry
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.js"></script>
+      <script src="script.js"></script>
+      <!-- Initialize Locomotive Scroll -->
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true,
+            multiplier: 1,
+            lerp: 0.1
+          });
+        });
+      </script>
+ </body>
+</html>

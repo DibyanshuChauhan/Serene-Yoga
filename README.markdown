@@ -37,7 +37,7 @@ The project leverages a robust stack of front-end technologies and libraries to 
   - **Custom Styling** for modals, cards, and calendar to align with the yoga studio's serene aesthetic.
 - **External Libraries**:
   - **Font Awesome (v6.5.0)**: Provides icons for navigation (hamburger menu), social media links, and class details (e.g., clock, user).
-  - **Google Fonts**: Uses *Poppins* (modern sans-serif) for body text and *Playfair Display* (elegant serif) for headings to enhance typography.
+  - **Google Fonts**: Uses _Poppins_ (modern sans-serif) for body text and _Playfair Display_ (elegant serif) for headings to enhance typography.
 - **Key Features**:
   - Theme toggle (light/dark) for user preference.
   - Responsive navbar with a hamburger menu for mobile devices.
@@ -218,7 +218,7 @@ To run the project locally, follow these steps:
 
    - Use a local server to serve the files (required for proper functioning of external CDNs and relative paths).
    - Options:
-     - **VS Code Live Server**: Install the *Live Server* extension and open `index.html`.
+     - **VS Code Live Server**: Install the _Live Server_ extension and open `index.html`.
      - **Python HTTP Server**: Run `python -m http.server 8000` in the project directory and access `http://localhost:8000`.
      - **Node.js**: Use `npx serve` or any static server.
 
@@ -260,7 +260,7 @@ To run the project locally, follow these steps:
 
 3. **Class Calendar**:
 
-   - Navigate to the *Classes* section.
+   - Navigate to the _Classes_ section.
    - Use filter buttons to view specific class types.
    - Click a calendar event to see details and submit an enquiry.
 
@@ -271,7 +271,7 @@ To run the project locally, follow these steps:
 
 5. **Blog and Sharing**:
 
-   - In the *Blog* section, click *Read More* to expand posts.
+   - In the _Blog_ section, click _Read More_ to expand posts.
    - Test copying links or sharing on social media (Facebook/Twitter).
 
 6. **Theme Toggle**:
@@ -314,5 +314,5 @@ To run the project locally, follow these steps:
 
 **Serene Yoga Studio** is a well-rounded web application showcasing modern front-end development techniques. It combines **HTML5**, **CSS3**, **JavaScript**, and popular libraries to deliver a responsive, interactive, and user-friendly experience. The project is designed to be intuitive for users and administrators, with clear documentation and setup instructions to facilitate evaluation. For any questions or clarifications, the code and this README provide all necessary details.
 
-**Developed by**: Aditya Kumar Dhal
-**Date**:  02 May 2025
+**Developed by**: Aditya Kumar Dhal /
+**Date**: 02 May 2025

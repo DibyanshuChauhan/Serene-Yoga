@@ -95,7 +95,7 @@ The project leverages a robust stack of front-end technologies and libraries to 
 
 - **Purpose**: Loads third-party libraries efficiently to reduce local file size.
 - **Usage**:
-  - Links to Font Awesome, Google Fonts, FullCalendar, Toastify.js, and Locomotive Scroll via `cdnjs` and `jsdelivr`.
+  - Links to Font Awesome, Google Fonts,SwiperJS, FullCalendar, Toastify.js, and Locomotive Scroll via `cdnjs` and `jsdelivr`.
   - Cloudflare challenge script for security (included in `index.html`).
 
 ### 8. **Other**
@@ -204,6 +204,17 @@ The project offers a rich set of features for both users and administrators, ens
 - **ARIA Labels**: Improve accessibility for buttons (e.g., theme toggle, back-to-top).
 - **Semantic HTML**: Enhances screen reader compatibility.
 
+### 11. **Contact Form**:
+
+- A form in the contact section collects name, email, and message.
+- JavaScript validates inputs and stores submissions in localStorage.
+- Users receive a confirmation alert upon successful submission.
+
+### 12. **Testimonial Section**:
+
+- Displays static testimonials with user names and feedback.
+- Styled with CSS cards for a clean, responsive layout.
+
 ---
 
 ## Setup Instructions
@@ -234,7 +245,7 @@ To run the project locally, follow these steps:
 
 5. **Dependencies**:
 
-   - No manual installation is required as all libraries (Font Awesome, FullCalendar, Toastify.js, Locomotive Scroll, Google Fonts) are loaded via CDNs.
+   - No manual installation is required as all libraries (Font Awesome, FullCalendar,Swiper.js, Toastify.js, Locomotive Scroll, Google Fonts) are loaded via CDNs.
    - Ensure an active internet connection for CDN resources to load.
 
 6. **Browser Compatibility**:
@@ -314,5 +325,6 @@ To run the project locally, follow these steps:
 
 **Serene Yoga Studio** is a well-rounded web application showcasing modern front-end development techniques. It combines **HTML5**, **CSS3**, **JavaScript**, and popular libraries to deliver a responsive, interactive, and user-friendly experience. The project is designed to be intuitive for users and administrators, with clear documentation and setup instructions to facilitate evaluation. For any questions or clarifications, the code and this README provide all necessary details.
 
-**Developed by**: Aditya Kumar Dhal /
-**Date**: 02 May 2025
+**Developed by**:
+
+- Aditya Kumar Dhal

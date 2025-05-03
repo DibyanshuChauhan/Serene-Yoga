@@ -26,6 +26,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.css"
     />
+    <!-- Swiper.js CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="styles.css" />
     <!-- Locomotive Scroll CDN -->
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
@@ -66,6 +71,7 @@
           <a href="#about">About</a>
           <a href="#classes">Classes</a>
           <a href="#blog">Blog</a>
+          <a href="#feedback">Feedback</a>
           <button class="theme-toggle" aria-label="Toggle theme">
             <i class="fas fa-sun"></i>
           </button>
@@ -221,9 +227,63 @@
     <div id="main-content" data-scroll-container>
       <!-- Hero Section -->
       <section id="home" class="hero">
-        <div class="hero-content container"></div>
+        <div class="swiper hero-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="./assets/Hero.jpg" alt="Yoga in serene environment" />
+              <div class="hero-content">
+                <h1>Find Your Inner Peace</h1>
+                <p>Join our yoga classes to embrace mindfulness and wellness.</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/Hero2.jpg" alt="Group yoga session" />
+              <div class="hero-content">
+                <h1>Strengthen Body & Mind</h1>
+                <p>Explore dynamic yoga practices for all levels.</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/Hero3.jpg" alt="Sunset yoga practice" />
+              <div class="hero-content">
+                <h1>Connect with Community</h1>
+                <p>Be part of our inclusive yoga family.</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/Hero4.jpg" alt="Morning yoga practice" />
+              <div class="hero-content">
+                <h1>Start Your Day with Yoga</h1>
+                <p>Energize your mornings with our refreshing classes.</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/Hero5.jpg" alt="Outdoor yoga session" />
+              <div class="hero-content">
+                <h1>Embrace Nature</h1>
+                <p>Experience yoga in the beauty of the outdoors.</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/Hero6.jpg" alt="Meditation and yoga" />
+              <div class="hero-content">
+                <h1>Deepen Your Practice</h1>
+                <p>Combine meditation and yoga for ultimate mindfulness.</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="./assets/Hero7.jpg" alt="Restorative yoga practice" />
+              <div class="hero-content">
+                <h1>Restore and Relax</h1>
+                <p>Unwind with our restorative yoga sessions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
       </section>
-
 
       <!-- About Section -->
       <section id="about" class="about">
@@ -304,7 +364,6 @@
           </div>
         </div>
       </section>
-
 
       <!-- Classes Section -->
       <section id="classes" class="classes">
@@ -549,7 +608,6 @@
           </div>
         </section>
 
-
         <!-- Blog Section -->
         <section id="blog" class="blog">
           <div class="container">
@@ -764,6 +822,123 @@
           </div>
         </section>
 
+        <!-- Feedback Section -->
+        <section id="feedback" class="feedback">
+          <div class="container">
+            <h2>Student Feedback</h2>
+            <div class="feedback-grid">
+              <div class="feedback-card">
+                <div class="feedback-header">
+                  <img src="./assets/user1.jpg" alt="Riya Sharma" class="user-image" />
+                  <div class="feedback-info">
+                    <h4>Riya Sharma</h4>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  The Yin Yoga classes at Serene Yoga Studio have been a game-changer for my stress levels. Priya's calming guidance makes every session feel like a mini-retreat!
+                </p>
+              </div>
+              <div class="feedback-card">
+                <div class="feedback-header">
+                  <img src="./assets/user2.jpg" alt="Amit Patel" class="user-image" />
+                  <div class="feedback-info">
+                    <h4>Amit Patel</h4>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  I started with Hatha Yoga as a beginner, and Anjali’s patient teaching helped me build confidence. The studio’s welcoming vibe keeps me coming back.
+                </p>
+              </div>
+              <div class="feedback-card">
+                <div class="feedback-header">
+                  <img src="./assets/user3.jpg" alt="Sarah Jones" class="user-image" />
+                  <div class="feedback-info">
+                    <h4>Sarah Jones</h4>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  Vinyasa Flow with Julie is both challenging and fun! The studio’s community feels like family, and I’ve grown so much in my practice.
+                </p>
+              </div>
+              <div class="feedback-card">
+                <div class="feedback-header">
+                  <img src="./assets/user4.jpg" alt="Vikram Singh" class="user-image" />
+                  <div class="feedback-info">
+                    <h4>Vikram Singh</h4>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  Power Yoga has transformed my fitness routine. Anjali’s energy is infectious, and the classes are perfectly structured for a great workout.
+                </p>
+              </div>
+              <div class="feedback-card">
+                <div class="feedback-header">
+                  <img src="./assets/user5.jpg" alt="Neha Kapoor" class="user-image" />
+                  <div class="feedback-info">
+                    <h4>Neha Kapoor</h4>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  Restorative Yoga with Neha Gupta is pure bliss. It’s helped me manage my anxiety, and the studio’s ambiance is so calming.
+                </p>
+              </div>
+              <div class="feedback-card">
+                <div class="feedback-header">
+                  <img src="./assets/user6.jpg" alt="Kiran Malhotra" class="user-image" />
+                  <div class="feedback-info">
+                    <h4>Kiran Malhotra</h4>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  Ashtanga Yoga with Sakshi has been an incredible journey. Her expertise and encouragement have pushed me to new limits in my practice.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Footer -->
         <footer class="footer">
           <div class="container">
@@ -782,6 +957,7 @@
                   <li><a href="#about">About</a></li>
                   <li><a href="#classes">Classes</a></li>
                   <li><a href="#blog">Blog</a></li>
+                  <li><a href="#feedback">Feedback</a></li>
                 </ul>
               </div>
               <div class="footer-section">
@@ -846,7 +1022,6 @@
                     id="name"
                     name="name"
                     required
-                    class="border-2 border-accent rounded-lg p-2 bg-card-bg text-text focus:outline-none focus:border-primary focus:shadow-md w-full"
                   />
                 </div>
                 <div>
@@ -856,7 +1031,6 @@
                     id="email"
                     name="email"
                     required
-                    class="border-2 border-accent rounded-lg p-2 bg-card-bg text-text focus:outline-none focus:border-primary focus:shadow-md w-full"
                   />
                 </div>
                 <div>
@@ -866,7 +1040,6 @@
                     id="phone"
                     name="phone"
                     required
-                    class="border-2 border-accent rounded-lg p-2 bg-card-bg text-text focus:outline-none focus:border-primary focus:shadow-md w-full"
                   />
                 </div>
                 <div>
@@ -876,8 +1049,7 @@
                     id="enquiry-class"
                     name="class"
                     readonly
-                    class="border-2 border-accent rounded-lg p-2 bg-gray-100 text-text opacity-90 w-full"
-                  />
+                    />
                 </div>
                 <div>
                   <label for="enquiry-date" class="block">Date:</label>
@@ -886,8 +1058,7 @@
                     id="enquiry-date"
                     name="date"
                     readonly
-                    class="border-2 border-accent rounded-lg p-2 bg-gray-100 text-text opacity-90 w-full"
-                  />
+                    />
                 </div>
                 <div>
                   <label for="enquiry-time" class="block">Time:</label>
@@ -896,8 +1067,7 @@
                     id="enquiry-time"
                     name="time"
                     readonly
-                    class="border-2 border-accent rounded-lg p-2 bg-gray-100 text-text opacity-90 w-full"
-                  />
+                    />
                 </div>
                 <div>
                   <label for="enquiry-message" class="block">Your Enquiry:</label>
@@ -907,16 +1077,10 @@
                     rows="3"
                     placeholder="Enter your enquiry or questions here..."
                     required
-                    class="border-2 border-accent rounded-lg p-2 bg-card-bg text-text focus:outline-none focus:border-primary focus:shadow-md w-full"
                   ></textarea>
                 </div>
                 <div>
-                  <button
-                    type="submit"
-                    class="bg-gradient-to-r from-primary to-yellow-400 text-white rounded-lg p-2 font-semibold hover:scale-105 hover:shadow-lg transition-transform duration-300 w-full"
-                  >
-                    Submit Enquiry
-                  </button>
+                  <button type="submit">Submit Enquiry</button>
                 </div>
               </div>
             </form>
@@ -926,6 +1090,8 @@
 
       <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.js"></script>
+      <!-- Swiper.js CDN -->
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
       <script src="script.js"></script>
       <!-- Initialize Locomotive Scroll -->
       <script>
@@ -938,5 +1104,30 @@
           });
         });
       </script>
- </body>
+      <!-- Swiper.js Initialization for Hero Carousel -->
+      <script>
+        // Swiper.js initialization for hero section carousel
+        document.addEventListener('DOMContentLoaded', () => {
+          const swiper = new Swiper('.hero-swiper', {
+            loop: true,
+            autoplay: {
+              delay: 5000,
+              disableOnInteraction: false,
+            },
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+            effect: 'fade',
+            fadeEffect: {
+              crossFade: true,
+            },
+          });
+        });
+      </script>
+    </body>
 </html>

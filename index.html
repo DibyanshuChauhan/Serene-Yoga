@@ -32,23 +32,6 @@
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="styles.css" />
-    <!-- Locomotive Scroll CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-    <!-- Minimal CSS for Locomotive Scroll -->
-    <style>
-      html.has-scroll-smooth {
-        overflow: hidden;
-      }
-      html.has-scroll-dragging {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-      [data-scroll-container] {
-        min-height: 100vh;
-      }
-    </style>
   </head>
   <body>
     <!-- Navbar Toggle Switch -->
@@ -224,54 +207,54 @@
     </div>
 
     <!-- Main Content -->
-    <div id="main-content" data-scroll-container>
+    <div id="main-content">
       <!-- Hero Section -->
       <section id="home" class="hero">
         <div class="swiper hero-swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="./assets/Hero.jpg" alt="Yoga in serene environment" />
+            <div class="swiper-slide" data-slide-id="1">
+              <img src="./assets/Hero.jpg" alt="Yoga in serene environment" data-mobile-src="./assets/mobile1.jpg" />
               <div class="hero-content">
                 <h1>Find Your Inner Peace</h1>
                 <p>Join our yoga classes to embrace mindfulness and wellness.</p>
               </div>
             </div>
-            <div class="swiper-slide">
-              <img src="./assets/Hero2.jpg" alt="Group yoga session" />
+            <div class="swiper-slide" data-slide-id="2">
+              <img src="./assets/Hero2.jpg" alt="Group yoga session" data-mobile-src="./assets/mobile2.jpg" />
               <div class="hero-content">
                 <h1>Strengthen Body & Mind</h1>
                 <p>Explore dynamic yoga practices for all levels.</p>
               </div>
             </div>
-            <div class="swiper-slide">
-              <img src="./assets/Hero3.jpg" alt="Sunset yoga practice" />
+            <div class="swiper-slide" data-slide-id="3">
+              <img src="./assets/Hero3.jpg" alt="Sunset yoga practice" data-mobile-src="./assets/mobile3.jpg" />
               <div class="hero-content">
                 <h1>Connect with Community</h1>
                 <p>Be part of our inclusive yoga family.</p>
               </div>
             </div>
-            <div class="swiper-slide">
-              <img src="./assets/Hero4.jpg" alt="Morning yoga practice" />
+            <div class="swiper-slide" data-slide-id="4">
+              <img src="./assets/Hero4.jpg" alt="Morning yoga practice" data-mobile-src="./assets/mobile4.jpg" />
               <div class="hero-content">
                 <h1>Start Your Day with Yoga</h1>
                 <p>Energize your mornings with our refreshing classes.</p>
               </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-slide-id="5">
               <img src="./assets/Hero5.jpg" alt="Outdoor yoga session" />
               <div class="hero-content">
                 <h1>Embrace Nature</h1>
                 <p>Experience yoga in the beauty of the outdoors.</p>
               </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-slide-id="6">
               <img src="./assets/Hero6.jpg" alt="Meditation and yoga" />
               <div class="hero-content">
                 <h1>Deepen Your Practice</h1>
                 <p>Combine meditation and yoga for ultimate mindfulness.</p>
               </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-slide-id="7">
               <img src="./assets/hero7.jpg" alt="Restorative yoga practice" />
               <div class="hero-content">
                 <h1>Restore and Relax</h1>
@@ -1093,39 +1076,83 @@
       <!-- Swiper.js CDN -->
       <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
       <script src="script.js"></script>
-      <!-- Initialize Locomotive Scroll -->
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const scroll = new LocomotiveScroll({
-            el: document.querySelector('[data-scroll-container]'),
-            smooth: true,
-            multiplier: 1,
-            lerp: 0.1
-          });
-        });
-      </script>
       <!-- Swiper.js Initialization for Hero Carousel -->
       <script>
-        // Swiper.js initialization for hero section carousel
         document.addEventListener('DOMContentLoaded', () => {
-          const swiper = new Swiper('.hero-swiper', {
-            loop: true,
-            autoplay: {
-              delay: 5000,
-              disableOnInteraction: false,
-            },
-            navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-              el: '.swiper-pagination',
-              clickable: true,
-            },
-            effect: 'fade',
-            fadeEffect: {
-              crossFade: true,
-            },
+          let swiperInstance = null;
+          const swiperContainer = document.querySelector('.hero-swiper');
+          const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
+          const allSlides = Array.from(swiperWrapper.querySelectorAll('.swiper-slide'));
+          // Store original slides to restore on desktop
+          const originalSlidesHTML = swiperWrapper.innerHTML;
+          // Define mobile slide IDs
+          const mobileSlideIds = ['1', '2', '3', '4'];
+
+          // Function to initialize Swiper
+          function initializeSwiper() {
+            if (swiperInstance) {
+              swiperInstance.destroy(true, true); // Destroy existing instance
+            }
+            swiperInstance = new Swiper('.hero-swiper', {
+              loop: true,
+              autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+              },
+              navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+              effect: 'fade',
+              fadeEffect: {
+                crossFade: true,
+              },
+            });
+          }
+
+          // Function to update slides and images based on screen size
+          function updateSlides() {
+            const isMobile = window.innerWidth <= 768; // Match CSS breakpoint
+            if (isMobile) {
+              // Filter to keep only mobile slides
+              const mobileSlides = allSlides.filter(slide => 
+                mobileSlideIds.includes(slide.dataset.slideId)
+              );
+              // Clear current slides
+              swiperWrapper.innerHTML = '';
+              // Append mobile slides and update image sources
+              mobileSlides.forEach(slide => {
+                const img = slide.querySelector('img');
+                const mobileSrc = img.dataset.mobileSrc;
+                if (mobileSrc) {
+                  img.src = mobileSrc; // Use mobile-specific image
+                }
+                swiperWrapper.appendChild(slide);
+              });
+            } else {
+              // Restore all slides for desktop
+              swiperWrapper.innerHTML = originalSlidesHTML;
+              // Restore original image sources
+              allSlides.forEach(slide => {
+                const img = slide.querySelector('img');
+                const originalSrc = img.getAttribute('src');
+                img.src = originalSrc; // Ensure desktop images are used
+              });
+            }
+            // Reinitialize Swiper
+            initializeSwiper();
+          }
+
+          // Initial update
+          updateSlides();
+
+          // Update on window resize
+          window.addEventListener('resize', () => {
+            updateSlides();
           });
         });
       </script>

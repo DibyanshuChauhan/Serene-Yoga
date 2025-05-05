@@ -678,15 +678,6 @@ newsletterForm.addEventListener("submit", (e) => {
   newsletterForm.reset(); // Resets form
 });
 
-// Progress bar on scroll
-// Updates progress bar width based on scroll position
-window.addEventListener("scroll", () => {
-  const scrollHeight = document.body.scrollHeight - window.innerHeight; // Total scrollable height
-  const scrollPosition = window.scrollY; // Current scroll position
-  const progress = (scrollPosition / scrollHeight) * 100; // Progress percentage
-  document.querySelector(".progress-bar").style.width = `${progress}%`; // Updates progress bar
-});
-
 // Intersection observer for animations
 // Animates elements when they come into view
 const observer = new IntersectionObserver(

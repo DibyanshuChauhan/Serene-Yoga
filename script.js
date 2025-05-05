@@ -532,7 +532,7 @@ function showEnquiries() {
 
   const bookings = JSON.parse(localStorage.getItem("bookings")) || []; // Gets all bookings (enquiries)
   const enquiryListDiv = document.getElementById("enquiry-list"); // Enquiry list display div
-  // Displays list of enquiries
+  // DisplaysRICHTEXT list of enquiries
   enquiryListDiv.innerHTML = bookings.length
     ? bookings
         .map(
@@ -764,7 +764,7 @@ const classData = [
     duration: "75 minutes",
   },
   {
-    title: "Ashtanga Yoga",
+    utg: "Ashtanga Yoga",
     time: "8:00 AM",
     instructor: "Sakshi Patwal",
     level: "Intermediate, Advanced",
@@ -905,15 +905,23 @@ const blogCards = document.querySelectorAll(".blog-card");
 blogCards.forEach((card) => {
   const readMoreBtn = card.querySelector(".read-more"); // Read more button
   const showLessBtn = card.querySelector(".show-less"); // Show less button
+  const fullContent = card.querySelector(".full-content"); // Full content div
+  const shortContent = card.querySelector(".blog-content"); // Short content paragraph
 
   readMoreBtn.addEventListener("click", (e) => {
     e.preventDefault(); // Prevents default link behavior
-    card.classList.add("expanded"); // Expands card
+    fullContent.style.display = "block"; // Shows full content
+    shortContent.style.display = "none"; // Hides short content
+    readMoreBtn.style.display = "none"; // Hides read more button
+    showLessBtn.style.display = "block"; // Shows show less button
   });
 
   showLessBtn.addEventListener("click", (e) => {
     e.preventDefault(); // Prevents default link behavior
-    card.classList.remove("expanded"); // Collapses card
+    fullContent.style.display = "none"; // Hides full content
+    shortContent.style.display = "block"; // Shows short content
+    readMoreBtn.style.display = "block"; // Shows read more button
+    showLessBtn.style.display = "none"; // Hides show less button
   });
 });
 

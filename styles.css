@@ -798,33 +798,6 @@ input:checked + .navbar-toggle-slider:before {
   justify-content: space-between;
   align-items: center;
 }
-.share-link-btn {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background 0.3s, transform 0.3s;
-}
-.share-link-btn:hover {
-  background: var(--secondary);
-  transform: scale(1.05);
-}
-.social-share {
-  display: flex;
-  gap: 10px;
-}
-.social-share-btn {
-  color: var(--text);
-  font-size: 1.2rem;
-  transition: color 0.3s, transform 0.3s;
-}
-.social-share-btn:hover {
-  color: var(--primary);
-  transform: scale(1.2);
-}
 
 /* Blog Section */
 .blog {

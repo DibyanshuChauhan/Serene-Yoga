@@ -171,6 +171,11 @@ input:checked + .navbar-toggle-slider:before {
   display: flex;
   align-items: center;
   gap: 30px;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+.nav-links.active {
+  max-height: 70vh; /* Set max height for scrollable navbar */
+  opacity: 1;
 }
 .nav-links a {
   text-decoration: none;
@@ -1129,34 +1134,80 @@ input:checked + .navbar-toggle-slider:before {
 
 /* Responsive Navigation */
 @media (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show hamburger menu on mobile */
+  }
   .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
+    display: none; /* Hide nav-links by default */
+    flex-direction: column; /* Stack links vertically */
+    align-items: flex-start; /* Align links to the left */
+    width: 100%; /* Full width for mobile */
+    background: var(--card-bg); /* Background for mobile menu */
+    position: absolute; /* Position below navbar */
+    top: 100%; /* Start below navbar */
     left: 0;
-    width: 100%;
-    background: var(--card-bg);
-    padding: 20px;
-    box-shadow: var(--shadow);
+    padding: 20px; /* Add padding for mobile menu */
+    box-shadow: var(--shadow-lg); /* Add shadow for depth */
+    max-height: 70vh; /* Limit height for scrollable navbar */
+    overflow-y: auto; /* Enable vertical scrolling */
+    opacity: 0; /* Hidden by default */
+    transition: max-height 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+  }
+  .nav-links::-webkit-scrollbar {
+    width: 6px; /* Custom scrollbar width for navbar */
+  }
+  .nav-links::-webkit-scrollbar-track {
+    background: var(--card-bg); /* Scrollbar track matches theme */
+    border-radius: 4px;
+  }
+  .nav-links::-webkit-scrollbar-thumb {
+    background: var(--primary); /* Scrollbar thumb color */
+    border-radius: 4px;
+  }
+  .nav-links::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary); /* Hover effect for scrollbar */
   }
   .nav-links.active {
-    display: flex;
+    display: flex; /* Show when active */
+    max-height: 70vh; /* Expand to show content */
+    opacity: 1; /* Make visible */
   }
-  .nav-links a {
-    margin: 10px 0;
+  .nav-links a,
+  .logout-btn,
+  .welcome-message {
+    width: 100%; /* Full width for each item */
+    padding: 10px 0; /* Add padding for touch targets */
+    text-align: left; /* Align text to the left */
   }
-  .hamburger {
-    display: block;
-  }
-  .theme-toggle,
   .logout-btn {
-    margin: 10px 0;
+    margin-top: 10px; /* Space above logout button */
+    width: auto; /* Allow button to fit content */
+    display: inline-block; /* Inline-block for button */
+  }
+  .dashboard-dropdown {
+    width: 100%; /* Full width for dropdown */
   }
   .dashboard-content {
-    width: 100%;
-    max-width: 300px;
-    right: 20px;
+    width: calc(100% - 40px); /* Adjust width to fit screen with margin */
+    right: 0; /* Align to right */
+    left: 0; /* Stretch across */
+    margin: 0 20px; /* Center with margin */
+    max-width: none; /* Remove max-width constraint */
+  }
+  .navbar-toggle {
+    top: 15px; /* Adjust toggle position */
+    right: 60px; /* Space for hamburger */
+  }
+}
+@media (max-width: 480px) {
+  .logo a {
+    font-size: 1.5rem; /* Smaller logo on small screens */
+  }
+  .navbar-toggle {
+    right: 50px; /* Adjust toggle for smaller screens */
+  }
+  .dashboard-content {
+    width: calc(100% - 40px); /* Maintain width for small screens */
   }
 }
 

@@ -532,7 +532,7 @@ function showEnquiries() {
 
   const bookings = JSON.parse(localStorage.getItem("bookings")) || []; // Gets all bookings (enquiries)
   const enquiryListDiv = document.getElementById("enquiry-list"); // Enquiry list display div
-  // DisplaysRICHTEXT list of enquiries
+  // Displays list of enquiries
   enquiryListDiv.innerHTML = bookings.length
     ? bookings
         .map(
@@ -755,7 +755,7 @@ const classData = [
     duration: "75 minutes",
   },
   {
-    utg: "Ashtanga Yoga",
+    title: "Ashtanga Yoga",
     time: "8:00 AM",
     instructor: "Sakshi Patwal",
     level: "Intermediate, Advanced",
@@ -779,20 +779,23 @@ for (let week = 0; week < 52; week++) {
   const weekStart = new Date(today); // Start of week
   weekStart.setDate(today.getDate() + week * 7); // Advances by week
   const shuffledClasses = shuffleArray([...classData]); // Shuffles classes
-  for (let day = 0; day < 6; day++) {
+  let classIndex = 0; // Tracks which class to assign
+  for (let day = 0; day < 7; day++) {
     const classDate = new Date(weekStart); // Date for class
     classDate.setDate(weekStart.getDate() + day); // Advances by day
     if (classDate.getDay() !== 0) {
-      // Excludes Sundays
+      // Excludes Sunday (getDay() === 0)
       events.push({
-        title: shuffledClasses[day].title,
+        title: shuffledClasses[classIndex % shuffledClasses.length].title,
         date: classDate.toISOString().split("T")[0], // ISO date string
-        time: shuffledClasses[day].time,
-        instructor: shuffledClasses[day].instructor,
-        level: shuffledClasses[day].level,
+        time: shuffledClasses[classIndex % shuffledClasses.length].time,
+        instructor:
+          shuffledClasses[classIndex % shuffledClasses.length].instructor,
+        level: shuffledClasses[classIndex % shuffledClasses.length].level,
         I18n: true, // Localization flag
-        duration: shuffledClasses[day].duration,
+        duration: shuffledClasses[classIndex % shuffledClasses.length].duration,
       });
+      classIndex++; // Move to next class
     }
   }
 }
